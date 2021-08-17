@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Tutorial
+# Navbar que muda de cor/opacidade quando o usuário rola a página, em ReactJS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup inicial
+- um site com conteúdo suficiente para que o usuário possa rolar a página para baixo 
+- um componente <Navbar>, que fica acima de tudo, ou seja, tem a position: fixed, top: 0 e width: 100vw (ou 100%). Coloquei também um padding-top: 70px no compoente que contém o texto.
 
-## Available Scripts
+## 1. Estado da Navbar, pra mudar a classe quando rolar a página
+- Importar o useState (fora do componente):
+```JavaScript
+import React, { useState } from 'react';
+```
+- Criar o estado (dentro do componente):
+```JavaScript
+const [navbar, setNavbar = useState(false);
+```
 
-In the project directory, you can run:
+## 2. Função que altera o estado
+- Função:
+```JavaScript
+const changeBackground = () => {
+    if (window.scrollY >= 60) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  }
+```
+ - EventListener na janela, para que vai disparar a função no ato de scroll:
+ ```JavaScript
+ window.addEventListener('scroll', changeBackground);
+ ```
 
-### `yarn start`
+## 3. Classe dinâmica no elemento <nav> dentro do componente Navbar
+- classe no elemento nav:
+```JavaScript
+<nav className={navbar ? 'navbar active' : 'navbar'}>
+```
+- classe .active:
+```CSS
+.active {
+  border: 0;
+  background-color: white;
+  color: rgb(35,20,64);
+  transition: .3s;
+}
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 4. (Bônus) Glassmorphism
+- adicione à classe .active:
+```CSS
+background-color: rgba(255, 255, 255, 0.4);
+backdrop-filter: blur(5px) saturate(105%);
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## Navegando no repositório
+Existem 4 branches nesse repositório: 
+```
+0-setup
+1-state
+2-class
+4-glass
+```
+Cada uma está atualizada com um passo do tutorial. Utilize o comando <strong>git checkout nome-da-branch</strong> para mudar para qualquer uma delas. A branch <strong>master</strong> está atualizada com a última versão, ou seja, está igual a branch 4-glass.
