@@ -16,6 +16,7 @@
   top: 0;
   width: 100vw;
   color: whitesmoke;
+  transition: .5s;
   
   ul {
     list-style-type: none;
@@ -35,3 +36,10 @@
     }
   }
 }
+
+.active {
+    border: 0;
+    background: white;
+    color: rgb(35,20,64);
+    transition: .3s;
+  }
