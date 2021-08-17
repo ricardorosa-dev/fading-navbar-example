@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.scss'
 
 export default function Navbar() {
+  const [navbar, setNavbar] = useState(false);
+  
   return (
     <nav className="Nav">
       <ul>
