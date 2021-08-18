@@ -55,6 +55,13 @@ backdrop-filter: blur(5px) saturate(105%);
 
 ---
 ## Navegando no repositório
+Caso queira clonar o projeto:
+
+- Instale as dependências
+```
+npm install
+```
+
 Existem 4 branches nesse repositório: 
 ```
 0-setup
@@ -62,4 +69,9 @@ Existem 4 branches nesse repositório:
 2-class
 4-glass
 ```
-Cada uma está atualizada com um passo do tutorial. Utilize o comando <strong>git checkout nome-da-branch</strong> para mudar para qualquer uma delas. A branch <strong>master</strong> está atualizada com a última versão, ou seja, está igual a branch 4-glass.
+- Para mudar de branch utilize o comando
+```
+git checkout nome-da-branch
+```
+
+Cada branch está atualizada com um passo do tutorial. Utilize o comando <strong>git checkout nome-da-branch</strong> para mudar para qualquer uma delas. A branch <strong>master</strong> está atualizada com a última versão, ou seja, está igual a branch 4-glass.
